@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take the Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lives {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .exam-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 60%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 2px solid #FF5E32;
+        }
+
+        .exam-header {
+            color: rgb(85, 81, 81);
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .answers {
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .answers label {
+            margin-right: 10px;
+            display: block;
+            padding: 10px;
+            background-color: #e1e1e1;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .answers label:hover,
+        .answers input[type="radio"]:checked + label {
+            background-color: #FF5E32;
+            color: white;
+        }
+
+        .btn {
+            background: #f4f4f4;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+        }
+
+        .btn:hover {
+            background: #FF5E32;
+            color: white;
+        }
+
+        .btn:disabled {
+            background-color: #d3d3d3;
+            cursor: not-allowed;
+        }
+
+        #modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        #modal button {
+            background-color: #FF5E32;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #modal button:hover {
+            background-color: #f1f1f1;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Display Lives -->
+        <div class="lives" id="lives-display">
+            ❤️: <span id="heart-count">5</span>
+        </div>
+
+        <!-- Exam Content -->
+        <div class="exam-content" id="exam-content">
+            <!-- Question will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <h3>Oops! Try again, study from here.</h3>
+        <button onclick="redirectToStudy()">Back to Study</button>
+    </div>
+
+    <script>
+        // Set initial lives
+        let lives = 5;
+        let currentQuestionIndex = 0;
+        let quizData = [];
+        let userAnswers = [];
+
+        // Fetch the JSON data to load course content
+        fetch('day1_python_fundamentals.json')
+            .then(response => response.json())
+            .then(data => {
+                quizData = data.modules;
+                generateTest(quizData); // Generate the quiz based on exercises
+            })
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+            });
+
+        // Function to generate test content based on exercises
+        function generateTest(courseData) {
+    const testContentDiv = document.getElementById('exam-content');
+    const randomQuestion = getRandomQuestion(courseData);
+    const answers = randomQuestion.exercises.map((exercise, index) => {
+        return `
+            <div class="answer-item">
+                <input type="radio" id="answer${index}" name="question" value="${exercise}" />
+                <label for="answer${index}">${exercise}</label>
+            </div>
+        `;
+    }).join('');
+    
+            testContentDiv.innerHTML = `
+                <div class="exam-header">${randomQuestion.content[0]}</div>
+                <div class="answers">${answers}</div>
+                <button class="btn" onclick="checkAnswer('${randomQuestion.correctAnswer}')">Submit</button>
+            `;
+        }
+
+        function getRandomQuestion(courseData) {
+            // Randomly select a question and its answers from the course data
+            const module = courseData[Math.floor(Math.random() * courseData.length)];
+            const exerciseIndex = Math.floor(Math.random() * module.exercises.length);
+            const question = module.exercises[exerciseIndex];
+
+            return {
+                content: module.content,
+                exercises: module.exercises,
+                correctAnswer: question // Simulating correct answer based on question (This would be enhanced)
+            };
+        }
+
+        // Modified checkAnswer function
+function checkAnswer(correctAnswer) {
+    const selectedAnswerElement = document.querySelector('input[name="question"]:checked');
+    if (!selectedAnswerElement) {
+        alert("Please select an answer!");
+        return;
+    }
+
+    const selectedAnswer = selectedAnswerElement.value;
+
+    if (selectedAnswer !== correctAnswer) {
+        lives--;
+        document.getElementById('heart-count').textContent = lives;
+
+        // Integrate with backend
+        handleWrongAnswer(selectedAnswer, correctAnswer);
+
+        if (lives <= 0) {
+            showModal();
+            return;
+        }
+    } else {
+        alert("Correct Answer!");
+        // Load next question if necessary
+    }
+}
+
+// Function to handle wrong answers
+function handleWrongAnswer(selectedAnswer, correctAnswer) {
+    const question = document.querySelector('.exam-header').textContent;
+
+    fetch('http://localhost:5000/log-wrong-answer', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            question, selectedAnswer, correctAnswer
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("AI Feedback: " + data.feedback);
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Failed to get AI feedback.");
+    });
+}
+// Modified checkAnswer function
+function checkAnswer(correctAnswer) {
+    const selectedAnswerElement = document.querySelector('input[name="question"]:checked');
+    if (!selectedAnswerElement) {
+        alert("Please select an answer!");
+        return;
+    }
+
+    const selectedAnswer = selectedAnswerElement.value;
+
+    if (selectedAnswer !== correctAnswer) {
+        lives--;
+        document.getElementById('heart-count').textContent = lives;
+
+        // Integrate with backend
+        handleWrongAnswer(selectedAnswer, correctAnswer);
+
+        if (lives <= 0) {
+            showModal();
+            return;
+        }
+    } else {
+        alert("Correct Answer!");
+        // Load next question if necessary
+    }
+}
+
+// Function to handle wrong answers
+function handleWrongAnswer(selectedAnswer, correctAnswer) {
+    const question = document.querySelector('.exam-header').textContent;
+
+    fetch('http://localhost:5000/log-wrong-answer', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            question, selectedAnswer, correctAnswer
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("AI Feedback: " + data.feedback);
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Failed to get AI feedback.");
+    });
+}
+
+        // Function to show the modal when lives are 0
+        function showModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        // Redirect to the study page when user clicks "Back to Study"
+        function redirectToStudy() {
+            window.location.href = 'study.html';
+        }
+    </script>
+</body>
+
+</html>

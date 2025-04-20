@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Md Tahsin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+        }
+
+        .content .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right {
+            height: 100%;
+            width: 55%;
+            padding: 5vw 4vw;
+        }
+
+        .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    align-items: flex-start; 
+}
+
+        .right h1 span {
+    color: #FF5E32;
+    margin-bottom: 10px;
+        }
+
+        .right p {
+        align-items: center;
+            margin-bottom: 10px;
+    color: #666;
+    margin-bottom: 20px;
+        }
+
+        .left {
+            height: 100%;
+            width: 45%;
+            padding: 5vw 4vw;
+        }
+
+        .left img {
+            height: 50%;
+            width: 50%;
+            object-fit: contain;
+            border-radius: 100%;
+            margin-top: 100px;
+            margin-left: 200px;
+        }
+
+        .icon {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon img {
+            height: 32px;
+            width: 32px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .icon img:hover {
+            filter: blur(0.5px);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="content">
+        <!-- Left section with image -->
+        <div class="left" data-aos="zoom-in-right" data-aos-delay="100" data-aos-easing="ease-in-out">
+            <img src="images/Tahsin.jpg" alt="Md Tahsin" />
+        </div>
+
+        <!-- text content -->
+        <div class="right" data-aos="zoom-in-left" data-aos-delay="100" data-aos-easing="ease-in-out">
+            <h1><span>Md Tahsin</span></h1>
+            <p>
+                Hi! I'm Tahsin — a recent graduate passionate about web development and AI.
+                <br> I completed my internship at Reddot, where I contributed to the BingeApp iOS project. I'm especially interested in building AI-based chatbots and intelligent systems that enhance user interaction. I’m constantly learning and excited to grow in both web development and AI technologies.
+            </p>
+            <div class="icon">
+                <a href="mailto:tahsin30899@gmail.com">
+                    <img src="images/email.png" alt="Email" />
+                </a> 
+                <a href="https://github.com/T-biohazard" target="_blank">
+                    <img src="images/github.png" alt="Github" />
+                </a>
+                <a href="https://www.linkedin.com/in/tahsin0o/" target="_blank">
+                    <img src="images/linkedin.png" alt="LinkedIn" />
+                </a>
+                <a href="https://t.me/telegram" target="_blank">
+                    <img src="images/telegram.png" alt="Telegram" />
+                </a>
+            </div>            
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

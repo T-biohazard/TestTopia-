@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Modules</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <style>
+        .btn {
+            background: #f4f4f4;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            width: auto;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+
+        .btn:hover {
+            background: #FF5E32;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        #course-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 columns layout */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .module {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .module:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .module h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .module p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .pointer {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: black;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .pointer:hover {
+            color: #007bff;
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            #course-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Course content dynamically generated here -->
+    <div id="course-content">
+        <!-- Dynamic module contents -->
+    </div>
+    <!-- Proceed -->
+    <div id="proceed-section">
+        <button id="btn" onclick="window.location.href='exam.html'" class="btn">Proceed to take a test</button>
+    </div>
+    <script>
+        // Fetch the JSON data to load course content
+        fetch('day1_python_fundamentals.json')
+            .then(response => response.json())
+            .then(data => {
+                loadCourseContent(data);
+            })
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+            });
+
+        // Function to load course content dynamically
+        function loadCourseContent(courseData) {
+            const courseContentDiv = document.getElementById('course-content');
+
+            courseData.modules.forEach((module, index) => {
+                let moduleHtml = `
+                    <div class="module">
+                        <h2>${module.title}</h2>
+                        <p>${module.description}</p>
+                        <a href="module-details.html?module=${index}" class="pointer">→</a>
+                    </div>
+                `;
+                courseContentDiv.innerHTML += moduleHtml;
+            });
+        }
+    </script>
+</body>
+
+</html>

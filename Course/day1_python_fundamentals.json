@@ -1,0 +1,322 @@
+{
+    "day": 1,
+    "title": "Python Fundamentals",
+    "modules": [
+        {
+            "module_id": "1",
+            "title": "Python Variables",
+            "description": "Understand how to declare, assign, and manipulate variables in Python.",
+            "content": [
+                "A variable is a name that refers to a value stored in memory.",
+                "Python uses dynamic typing\u2014you don\u2019t need to declare types explicitly.",
+                "Variables can be reassigned to different values and types."
+            ],
+            "examples": [
+                "# Example 1: Variable Declaration and Assignment\nname = \"John\"\nage = 30\nheight = 6.1\nis_student = False\nprint(\"Name:\", name)\nprint(\"Age:\", age)\nprint(\"Height:\", height)\nprint(\"Is Student:\", is_student)\n# Result:\nName: John\nAge: 30\nHeight: 6.1\nIs Student: False",
+                "# Example 2: Formatted Output\nprint(f\"Name: {name} Age: {age} Height: {height}\")\nprint(f\"Age: {age}\")\nprint(f\"Height: {height}\")\nprint(f\"Is Student: {is_student}\")\n# Result:\nName: John Age: 30 Height: 6.1\nAge: 30\nHeight: 6.1\nIs Student: False",
+                "# Example 3: Variable Reassignment\nname = \"Alice\"\nage = 25\nprint(\"Updated Name:\", name)\nprint(\"Updated Age:\", age)\n# Result:\nUpdated Name: Alice\nUpdated Age: 25",
+                "# Example 4: Variable Types\nprint(\"Variable Types:\")\nprint(\"Type of name:\", type(name))\nprint(\"Type of age:\", type(age))\nprint(\"Type of height:\", type(height))\nprint(\"Type of is_student:\", type(is_student))\n# Result:\nVariable Types:\nType of name: <class 'str'>\nType of age: <class 'int'>\nType of height: <class 'float'>\nType of is_student: <class 'bool'>",
+                "# Example 5: Variable Operations\na = 10\nb = 5\nsum_result = a + b\ndifference_result = a - b\nproduct_result = a * b\ndivision_result = a / b\nprint(\"Operations:\")\nprint(\"Sum:\", sum_result)\nprint(\"Difference:\", difference_result)\nprint(\"Product:\", product_result)\nprint(\"Division:\", division_result)\n# Result:\nOperations:\nSum: 15\nDifference: 5\nProduct: 50\nDivision: 2.0"
+            ],
+            "exercises": [
+                "Declare variables for name, age, and is_student. Print them using formatted strings.",
+                "Reassign new values to the same variables and print them again.",
+                "Print the data type of each variable using the type() function.",
+                "Perform addition, subtraction, multiplication, and division using two numbers."
+            ]
+        },
+        {
+            "module_id": "2",
+            "title": "Python Type Conversion",
+            "description": "Learn how to convert between different Python data types.",
+            "content": [
+                "You can convert data types using int(), float(), str(), and other type conversion functions.",
+                "Useful for user input and numeric operations."
+            ],
+            "examples": [
+                "# Example 1: String to Integer Conversion\nnum_string = '12'\nnum_integer = 23\nprint(\"Data type of num_string before Type Casting:\", type(num_string))\nnum_string = int(num_string)\nprint(\"Data type of num_string after Type Casting:\", type(num_string))\nnum_sum = num_integer + num_string\nprint(\"Sum:\", num_sum)\nprint(\"Data type of num_sum:\", type(num_sum))\n# Result:\nData type of num_string before Type Casting: <class 'str'>\nData type of num_string after Type Casting: <class 'int'>\nSum: 35\nData type of num_sum: <class 'int'>",
+                "# Example 2: Other Type Conversions\nnum1 = int(2.3)\nprint(num1)\nnum2 = int(-2.8)\nprint(num2)\nnum3 = float(5)\nprint(num3)\nnum4 = complex('3+5j')\nprint(num4)\n# Result:\n2\n-2\n5.0\n(3+5j)"
+            ],
+            "exercises": [
+                "Convert the string '100' into an integer and multiply it by 2.",
+                "Convert the float 9.8 to an integer and print the result.",
+                "Convert the number 10 to a complex number."
+            ]
+        },
+        {
+            "module_id": "3",
+            "title": "Python Input and Output",
+            "description": "Learn how to take user input and display output in Python.",
+            "content": [
+                "Use input() to get input from the user.",
+                "Use print() to display output.",
+                "You can format strings with f-strings or concatenation."
+            ],
+            "examples": [
+                "# Example 1: Input and Output\nname = input(\"Enter your name: \")\nage = int(input(\"Enter your age: \"))\nyear_of_birth = 2024 - age\nprint(\"Hello, \" + name + \"!\")\nprint(\"You are\", age, \"years old.\")\nprint(\"You were born in the year\", year_of_birth)\n# Result:\nEnter your name: Mariya Rahman\nEnter your age: 23\nHello, Mariya Rahman!\nYou are 23 years old.\nYou were born in the year 2001"
+            ],
+            "exercises": [
+                "Ask the user to input their favorite color and print it.",
+                "Input two numbers from the user and print their sum.",
+                "Get a user's full name and age, then print a welcome message using both."
+            ]
+        },
+        {
+            "module_id": "4",
+            "title": "Arithmetic Operators in Python",
+            "description": "Learn how to perform arithmetic operations in Python.",
+            "content": [
+                "Arithmetic operators include +, -, *, /, //, %, **.",
+                "You can use these to perform mathematical operations on numbers.",
+                "Use +=, -=, etc., for assignment operations."
+            ],
+            "examples": [
+                "# Example 1: Arithmetic Operations\na = 7\nb = 2\nprint('Sum: ', a + b)\nprint('Subtraction: ', a - b)\nprint('Multiplication: ', a * b)\nprint('Division: ', a / b)\nprint('Floor Division: ', a // b)\nprint('Modulo: ', a % b)\nprint('Power: ', a ** b)\na += b\nprint(a)\n# Result:\nSum:  9\nSubtraction:  5\nMultiplication:  14\nDivision:  3.5\nFloor Division:  3\nModulo:  1\nPower:  49\n9"
+            ],
+            "exercises": [
+                "Write a program that takes two numbers and prints all arithmetic operations between them.",
+                "Use ** to calculate the square of a number.",
+                "Use // to show floor division of two numbers."
+            ]
+        },
+        {
+            "module_id": "5",
+            "title": "Comparison Operators",
+            "description": "Learn how to compare values using Python comparison operators.",
+            "content": [
+                "Comparison operators include ==, !=, >, <, >=, <=.",
+                "They return True or False depending on the condition."
+            ],
+            "examples": [
+                "# Example 1: Comparison Operations\na = 5\nb = 2\nprint('(a == b)--> ', a == b)\nprint('(a != b)--> ', a != b)\nprint('(a > b)--> ', a > b)\nprint('(a < b)--> ', a < b)\nprint('(a >= b)--> ', a >= b)\nprint('(a <= b)--> ', a <= b)\n# Result:\n(a == b)-->  False\n(a != b)-->  True\n(a > b)-->  True\n(a < b)-->  False\n(a >= b)-->  True\n(a <= b)-->  False"
+            ],
+            "exercises": [
+                "Compare two variables and print whether they are equal.",
+                "Check if one number is greater than another and print the result.",
+                "Write a program to test all six comparison operators using any two numbers."
+            ]
+        },
+        {
+            "module_id": "6",
+            "title": "Logical Operators",
+            "description": "Learn how to use logical operators in Python such as and, or, and not.",
+            "content": [
+                "Logical operators are used to combine conditional statements.",
+                "`and` returns True if both statements are true.",
+                "`or` returns True if one of the statements is true.",
+                "`not` returns the opposite of the result."
+            ],
+            "examples": [
+                "# Example 1: Logical Operators\n# logical AND\nprint(True and True)\nprint(True and False)\n\n# logical OR\nprint(True or False)\n\n# logical NOT\nprint(not True)\n# Result:\nTrue\nFalse\nTrue\nFalse"
+            ],
+            "exercises": [
+                "Write expressions using and, or, and not operators and print the results.",
+                "Check if a number is greater than 10 and less than 20 using logical operators.",
+                "Combine comparison operators with logical operators to evaluate complex conditions."
+            ]
+        },
+        {
+            "module_id": "7",
+            "title": "Control Structures",
+            "description": "Understand how to control the flow of your program using if-else and loops.",
+            "content": [
+                "Control structures include if-else conditions and loops like for and while.",
+                "Use if, elif, and else to execute code based on conditions.",
+                "Use loops to repeat a block of code multiple times."
+            ],
+            "examples": [
+                "# Example 1: Python if\u2026else Statement\nnumber = 10\nif number > 0:\n    print('Positive number')\nelse:\n    print('Negative number')\nprint('This statement always executes')\n# Result:\nPositive number\nThis statement always executes",
+                "# Example 2: if\u2026elif\u2026else\nnumber = 15\nif number < 10:\n    print(\"The number is less than 10.\")\nelif number < 20:\n    print(\"The number is between 10 and 19.\")\nelif number < 30:\n    print(\"The number is between 20 and 29.\")\nelse:\n    print(\"The number is 30 or greater.\")\n# Result:\nThe number is between 10 and 19.",
+                "# Example 3: Nested if\nage = 29\nif age < 18:\n    if age < 13:\n        print(\"You are a child.\")\n    else:\n        print(\"You are a teenager.\")\nelse:\n    if age < 30:\n        print(\"You are a young adult.\")\n    elif age < 60:\n        print(\"You are a middle-aged adult.\")\n    else:\n        print(\"You are a senior adult.\")\n# Result:\nYou are a young adult.",
+                "# Example 4: for Loop\nfor i in range(4):\n    print(i)\n# Result:\n0\n1\n2\n3",
+                "# Example 4.1: Custom range\nfor i in range(1, 6, 2):\n  print(i)\n# Result:\n1\n3\n5",
+                "# Example 4.2: Loop over list\nnumbers = [1, 2, 3, 4, 5]\nfor num in numbers:\n    print(num * 2)\n# Result:\n2\n4\n6\n8\n10",
+                "# Example 4.3: Loop over strings\nlanguages = ['Swift', 'Python', 'Go']\nfor i in languages:\n    print(i)\n# Result:\nSwift\nPython\nGo",
+                "# Example 4.4: break\nfor i in range(5):\n    if i == 3:\n        break\n    print(i)\n# Result:\n0\n1\n2",
+                "# Example 4.5: continue\nfor i in range(5):\n    if i == 3:\n        continue\n    print(i)\n# Result:\n0\n1\n2\n4",
+                "# Example 5: Nested for loop\nfruits = [\"apple\", \"banana\", \"cherry\"]\ncolors = [\"red\", \"yellow\", \"black\"]\nfor fruit in fruits:\n    for color in colors:\n        print(fruit, color)\n# Result:\napple red\napple yellow\napple black\nbanana red\nbanana yellow\nbanana black\ncherry red\ncherry yellow\ncherry black"
+            ],
+            "exercises": [
+                "Use if-else to determine if a number is positive, negative, or zero.",
+                "Write a program that loops through numbers 1 to 10 and prints only even numbers.",
+                "Create a nested loop that prints a multiplication table for numbers 1 to 3."
+            ]
+        },
+        {
+            "module_id": "8",
+            "title": "Python Mathematics",
+            "description": "Learn to perform mathematical operations and use built-in functions from the math module.",
+            "content": [
+                "Python provides a built-in module called `math` that offers mathematical functions and constants.",
+                "You can use it for trigonometry, logarithms, exponentiation, and accessing constants like pi and e."
+            ],
+            "examples": [
+                "# Example: Using the math module\nimport math\n\n# Trigonometric functions\nprint(\"\\nTrigonometric Functions:\")\nprint(\"Sine of 30 degrees:\", math.sin(math.radians(30)))\nprint(\"Cosine of 30 degrees:\", math.cos(math.radians(30)))\nprint(\"Tangent of 30 degrees:\", math.tan(math.radians(30)))\n\n# Logarithmic and exponential functions\nprint(\"\\nLogarithmic and Exponential Functions:\")\nprint(\"Natural Logarithm (base e) of 2:\", math.log(2))\nprint(\"Logarithm base 10 of 100:\", math.log10(100))\nprint(\"Exponential of 2:\", math.exp(2))\n\n# Constants\nprint(\"\\nConstants:\")\nprint(\"Value of pi:\", math.pi)\nprint(\"Value of e:\", math.e)\n# Result:\nTrigonometric Functions:\nSine of 30 degrees: 0.49999999999999994\nCosine of 30 degrees: 0.8660254037844387\nTangent of 30 degrees: 0.5773502691896257\n\nLogarithmic and Exponential Functions:\nNatural Logarithm (base e) of 2: 0.6931471805599453\nLogarithm base 10 of 100: 2.0\nExponential of 2: 7.38905609893065\n\nConstants:\nValue of pi: 3.141592653589793\nValue of e: 2.718281828459045"
+            ],
+            "exercises": [
+                "Use the math module to calculate the sine of 45 degrees.",
+                "Find the exponential of 3 using math.exp().",
+                "Print the value of pi and e from the math module.",
+                "Compute the logarithm (base 10) of 1000.",
+                "Check if tangent of 45 degrees is 1."
+            ]
+        },
+        {
+            "module_id": "9",
+            "title": "Python List",
+            "description": "Learn how to create, access, modify, and manipulate lists in Python.",
+            "content": [
+                "A list is a collection that is ordered and changeable. Lists allow duplicate members.",
+                "You can access list elements using indices, modify them, add or remove elements, and iterate over them."
+            ],
+            "examples": [
+                "# Example 1: Creating a list\ncolors = ['Red', 'Black', 'Green']\nprint(\"Original list of colors:\", colors)\n# Result: ['Red', 'Black', 'Green']",
+                "# Example 2: Accessing elements\nprint(\"First color:\", colors[0])\nprint(\"Last color:\", colors[2])\nprint(\"Last color:\", colors[-1])\nprint(\"Sliced colors:\", colors[-2:])\n# Result: Red, Green, Green, ['Black', 'Green']",
+                "# Example 3: Modifying elements\ncolors[0] = 'Blue'\nprint(\"Modified list after changing the first color to Blue:\", colors)\n# Result: ['Blue', 'Black', 'Green']",
+                "# Example 4: Appending an element\ncolors.append('Yellow')\nprint(\"List after appending Yellow:\", colors)\n# Result: ['Blue', 'Black', 'Green', 'Yellow']",
+                "# Example 5: Inserting an element\ncolors.insert(1, 'White')\nprint(\"List after inserting White at index 1:\", colors)\n# Result: ['Blue', 'White', 'Black', 'Green', 'Yellow']",
+                "# Example 6: Removing an element\ncolors.remove(colors[0])\nprint(\"List after removing first element:\", colors)\n# Result: ['White', 'Black', 'Green', 'Yellow']",
+                "# Example 7: List operations\nprint(\"Number of colors in the list:\", len(colors))\nprint(\"Reversed list of colors:\", list(reversed(colors)))\n# Result: 4, ['Yellow', 'Green', 'Black', 'White']",
+                "# Example 8: Membership check\nprint(\"Is 'Green' present in the list?\", 'green' in colors)\n# Result: False",
+                "# Example 9: Iterating over a list\nprint(\"Iterating over the list of colors:\")\nfor color in colors:\n    print(color)\n# Result: White\nBlack\nGreen\nYellow",
+                "# Example 10: Sorting a list\nmy_list = [2, 1, 4, 5, 3]\nprint(\"Sorted list of colors:\", sorted(my_list))\n# Result: [1, 2, 3, 4, 5]"
+            ],
+            "exercises": [
+                "Create a list of your favorite fruits and print them.",
+                "Access and print the second and last item from your list.",
+                "Append a new item and remove the first one from the list.",
+                "Check if an item is present in your list using the `in` keyword.",
+                "Write a loop to print all items in your list in uppercase.",
+                "Sort a list of numbers in descending order."
+            ]
+        },
+        {
+            "module_id": "10",
+            "title": "Python Tuple",
+            "description": "Learn how to define and use tuples, an immutable sequence type in Python.",
+            "content": [
+                "A tuple is a collection that is ordered and immutable. Tuples are written with round brackets ().",
+                "Once a tuple is created, its elements cannot be modified. Tuples can contain elements of different types and allow duplicate values."
+            ],
+            "examples": [
+                "# Example 1: Define and access tuple\nmy_tuple = (1, 2, 3, 'a', 'b', 'c')\nprint(\"First element:\", my_tuple[0])\nprint(\"Last element:\", my_tuple[-1])\nprint(\"Slicing tuple:\", my_tuple[2:5])\n# Result: 1, c, (3, 'a', 'b')",
+                "# Example 2: Length of a tuple\nprint(\"Length of tuple:\", len(my_tuple))\n# Result: 6",
+                "# Example 3: Membership check\nprint(\"Is 'a' in the tuple?\", 'a' in my_tuple)\n# Result: True",
+                "# Example 4: Iterating over a tuple\nfor item in my_tuple:\n    print(item)\n# Result:\n1\n2\n3\na\nb\nc"
+            ],
+            "exercises": [
+                "Create a tuple with mixed data types and print it.",
+                "Access the second-to-last element of a tuple using negative indexing.",
+                "Check if a specific item exists in a tuple using the `in` keyword.",
+                "Write a loop to print each item in a tuple.",
+                "Use slicing to extract a portion of a tuple."
+            ]
+        },
+        {
+            "module_id": "11",
+            "title": "List-Tuple Conversion",
+            "description": "Understand how to convert between lists and tuples using built-in Python functions.",
+            "content": [
+                "Lists and tuples are different types in Python. Lists are mutable while tuples are immutable.",
+                "You can use the list() function to convert a tuple to a list, and the tuple() function to convert a list to a tuple."
+            ],
+            "examples": [
+                "# Example 1: Tuple to list\nfruits = ('apple','banana','orange')\ntuple_as_list = list(fruits)\nprint(\"Tuple converted to list:\", tuple_as_list)\n# Result: ['apple', 'banana', 'orange']",
+                "# Example 2: List to tuple\nlist_as_tuple = tuple(tuple_as_list)\nprint(\"List converted to tuple:\", list_as_tuple)\n# Result: ('apple', 'banana', 'orange')"
+            ],
+            "exercises": [
+                "Convert a tuple of three items into a list and add a new item.",
+                "Convert a list of numbers into a tuple and print its type.",
+                "Explain the difference between a tuple and a list in terms of mutability."
+            ]
+        },
+        {
+            "module_id": "12",
+            "title": "Python String",
+            "description": "Explore Python strings and how to manipulate them using operators and functions.",
+            "content": [
+                "Strings in Python are sequences of Unicode characters.",
+                "You can concatenate, iterate, and find the length of strings using built-in functions and operators."
+            ],
+            "examples": [
+                "# Example 1: Joining strings\ngreet = \"Hello \"\nname = \"World\"\nresult = greet + name\nprint(result)\n# Result: Hello World",
+                "# Example 2: Iterating over a string\ngreet = 'Hello'\nfor i in greet:\n    print(i)\n# Result:\nH\ne\nl\nl\no",
+                "# Example 3: Length of a string\ngreet = 'Hello'\nprint(len(greet))\n# Result: 5"
+            ],
+            "exercises": [
+                "Concatenate your first and last name using the + operator.",
+                "Write a loop to print each character of your name.",
+                "Find the length of any given string using `len()`."
+            ]
+        },
+        {
+            "module_id": "13",
+            "title": "Python Set",
+            "description": "Learn to work with sets in Python, including operations like union, intersection, and difference.",
+            "content": [
+                "A set is an unordered and unindexed collection of unique items.",
+                "Python sets do not allow duplicates and support set operations such as union, intersection, and difference."
+            ],
+            "examples": [
+                "# Example 1: Creating a set\ntoys = {'car', 'plane', 'animal'}\nprint(\"Initial set:\", toys)\n# Result: {'animal', 'car', 'plane'}",
+                "# Example 2: Adding elements\ntoys.add('doll')\nprint(\"After adding 'doll':\", toys)\n# Result: {'doll', 'animal', 'car', 'plane'}",
+                "# Example 3: Removing elements\ntoys.remove('animal')\nprint(\"After removing 'animal':\", toys)\n# Result: {'doll', 'car', 'plane'}",
+                "# Example 4: Membership check\nprint(\"Is 'car' in the set?\", 'car' in toys)\nprint(\"Is 'ball' in the set?\", 'ball' in toys)\n# Result: True, False",
+                "# Example 5: Length\nprint(\"Length of the set:\", len(toys))\n# Result: 3",
+                "# Example 6: Clearing the set\ntoys.clear()\nprint(\"Cleared set:\", toys)\n# Result: set()",
+                "# Example 7: Set operations\nset1 = {1, 2, 3, 4, 5}\nset2 = {4, 5, 6, 7, 8}\nprint(\"Union:\", set1.union(set2))\nprint(\"Intersection:\", set1.intersection(set2))\nprint(\"Difference (set1 - set2):\", set1.difference(set2))\nprint(\"Difference (set2 - set1):\", set2.difference(set1))\n# Result: {1,2,3,4,5,6,7,8}, {4,5}, {1,2,3}, {6,7,8}"
+            ],
+            "exercises": [
+                "Create a set of your favorite colors.",
+                "Add a new color to your set and print it.",
+                "Remove a color and check the set size.",
+                "Check if a certain color is in the set.",
+                "Perform union and intersection on two sets of numbers."
+            ]
+        },
+        {
+            "module_id": "14",
+            "title": "Python Dictionary",
+            "description": "Learn to create and manipulate dictionaries, which store data as key-value pairs.",
+            "content": [
+                "A dictionary is a collection of key-value pairs, where keys must be unique.",
+                "Dictionaries are mutable, and you can access, modify, add, and delete key-value pairs."
+            ],
+            "examples": [
+                "# Example 1: Creating a dictionary\nmy_dict = {}\nmy_dict['name'] = 'John'\nmy_dict['age'] = 30\nmy_dict['gender'] = 'male'\nprint(\"Dictionary:\", my_dict)\n# Result: {'name': 'John', 'age': 30, 'gender': 'male'}",
+                "# Example 2: Accessing values\nprint(\"Value for key 'name':\", my_dict['name'])\n# Result: John",
+                "# Example 3: Key existence check\nif 'age' in my_dict:\n    print(\"'age' is present\")\n# Result: 'age' is present",
+                "# Example 4: Removing a key\nremoved_value = my_dict.pop('age')\nprint(\"Removed value:\", removed_value)\nprint(\"Updated dictionary:\", my_dict)\n# Result: 30, {'name': 'John', 'gender': 'male'}",
+                "# Example 5: Iterating keys\nfor key in my_dict:\n    print(key)\n# Result: name, gender",
+                "# Example 6: Iterating values\nfor value in my_dict.values():\n    print(value)\n# Result: John, male",
+                "# Example 7: Length\nprint(\"Length:\", len(my_dict))\n# Result: 2",
+                "# Example 8: Clearing dictionary\nmy_dict.clear()\nprint(\"After clearing:\", my_dict)\n# Result: {}"
+            ],
+            "exercises": [
+                "Create a dictionary with three key-value pairs.",
+                "Access and print the value for a specific key.",
+                "Check if a key exists before accessing it.",
+                "Remove a key and print the remaining dictionary.",
+                "Write a loop to print all keys and values."
+            ]
+        },
+        {
+            "module_id": "15",
+            "title": "Python Function",
+            "description": "Understand how to define and use functions in Python to organize code and perform reusable tasks.",
+            "content": [
+                "Functions in Python are defined using the `def` keyword followed by the function name and parentheses.",
+                "Functions help in structuring code into blocks that can be reused."
+            ],
+            "examples": [
+                "# Example: Function with two arguments\ndef add_numbers(num1, num2):\n    sum = num1 + num2\n    print(\"Sum: \", sum)\n\n# Function call\nadd_numbers(5, 4)\n# Result: Sum: 9"
+            ],
+            "exercises": [
+                "Write a function to multiply two numbers and print the result.",
+                "Create a function that takes a name and prints a greeting.",
+                "Write a function to find the square of a number.",
+                "Define a function to check if a number is even or odd."
+            ]
+        }
+    ]
+}

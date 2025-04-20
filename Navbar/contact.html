@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+    <!-- CSS Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: url('bg.jpg') no-repeat top center;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 550px;
+            background: rgba(0,0,0,0.8);
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .wrapper .title h1 {
+            color: #e9edee;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-form {
+            display: flex;
+        }
+
+        .input-fields {
+            display: flex;
+            flex-direction: column;
+            margin-right: 4%;
+        }
+
+        .input-fields,
+        .msg {
+            width: 48%;
+        }
+
+        .input-fields .input,
+        .msg textarea {
+            margin: 10px 0;
+            background: transparent;
+            border: 0px;
+            border-bottom: 2px solid #9fa3a5;
+            padding: 10px;
+            color: #cbcccc;
+            width: 100%;
+        }
+
+        .msg textarea {
+            height: 212px;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #d2d7da;
+        }
+
+        ::-moz-placeholder {
+            color: #e5e9eb;
+        }
+
+        :-ms-input-placeholder {
+            color: #dfe1e2;
+        }
+
+        .btn {
+            background: #eff7f6;
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            color: #454446;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #abafaf;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #c9cbcc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            font-size: 30px;
+            color: #ffffff;
+            text-align: center;
+            display: none;
+        }
+
+        .blurred {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            display: none; 
+        }
+
+        /* Mobile View */
+        @media screen and (max-width: 600px) {
+            .contact-form {
+                flex-direction: column;
+            }
+
+            .msg textarea {
+                height: 80px;
+            }
+
+            .input-fields,
+            .msg {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            <h1>Contact Us</h1>
+        </div>
+        <div class="contact-form">
+            <div class="input-fields">
+                <input type="text" class="input" placeholder="Name" id="name" required>
+                <input type="email" class="input" placeholder="Email Address" id="email" required>
+                <input type="text" class="input" placeholder="Phone" id="phone" required>
+                <input type="text" class="input" placeholder="Subject" id="subject" required>
+            </div>
+            <div class="msg">
+                <textarea id="message" placeholder="Message" required></textarea>
+                <div class="btn" id="sendBtn">Send</div>
+            </div>
+        </div>
+        <!-- Loader -->
+        <div class="loader hidden" id="loader"></div>
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage"> ✔ Message Sent Successfully.</div>
+        <!-- Blurred Background -->
+        <div class="blurred" id="blurred"></div>
+    </div>
+
+    <script>
+       // Get elements
+const sendBtn = document.getElementById('sendBtn');
+const loader = document.getElementById('loader');
+const successMessage = document.getElementById('successMessage');
+const blurred = document.getElementById('blurred');
+
+// Function to validate inputs
+function validateForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    return name && email && phone && subject && message;
+}
+
+// Simulate form submission
+sendBtn.addEventListener('click', function () {
+    if (!validateForm()) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    // Show loader and hide button
+    loader.classList.remove('hidden');
+    sendBtn.classList.add('hidden');
+    blurred.style.display = 'block'; // Show blurred background
+
+    // Simulate form submission delay (e.g., 3 seconds)
+    setTimeout(function () {
+        // Hide loader and show success message
+        loader.classList.add('hidden');
+        successMessage.style.display = 'block';
+
+        // Reset form and button visibility after 2 seconds
+        setTimeout(function () {
+            successMessage.style.display = 'none';
+            document.querySelector('form').reset();
+            sendBtn.classList.remove('hidden');
+            blurred.style.display = 'none'; // blurred background immediately after success
+        }, 2000);
+    }, 3000);
+});
+    </script>
+</body>
+</html>

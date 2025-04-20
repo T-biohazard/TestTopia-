@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #FF5E32;
+        }
+
+        p,
+        ul {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h3 {
+            margin-top: 20px;
+        }
+
+        .module-navigation {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #007bff;
+        }
+
+        .module-navigation a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        .module-navigation a:hover {
+            color: #FF5E32;
+        }
+
+        .exercise-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .exercise-list li {
+            margin-bottom: 10px;
+        }
+
+        .exercise-list li:before {
+            content: "• ";
+            color: #131212;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 id="module-title">Module Title</h2>
+
+    <div id="module-description" class="content-section">
+        <p id="module-description-content">Description will be here.</p>
+    </div>
+
+    <div class="content-section" id="module-examples">
+        <h3>Examples:</h3>
+        <ul id="examples-list"></ul>
+    </div>
+
+    <div class="content-section" id="module-exercises">
+        <h3>Exercises:</h3>
+        <ul class="exercise-list" id="exercises-list"></ul>
+    </div>
+
+    <div class="module-navigation">
+        <a href="study.html">← Back to study</a>
+    </div>
+
+    <script>
+        // Fetch the module index from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const moduleIndex = urlParams.get('module');
+
+        // Fetch the JSON data to load course content
+        fetch('day1_python_fundamentals.json')
+            .then(response => response.json())
+            .then(data => {
+                loadModuleContent(data, moduleIndex);
+            })
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+            });
+
+        // Function to load specific module content dynamically
+        function loadModuleContent(courseData, moduleIndex) {
+            const module = courseData.modules[moduleIndex];
+
+            // Setting up module title and description
+            document.getElementById('module-title').textContent = module.title;
+            document.getElementById('module-description-content').textContent = module.description;
+
+            // Displaying examples in a formatted way
+            const examplesList = document.getElementById('examples-list');
+            module.examples.forEach(example => {
+                const exampleItem = document.createElement('li');
+                exampleItem.innerHTML = `<pre>${example}</pre>`;
+                examplesList.appendChild(exampleItem);
+            });
+
+            // Displaying exercises
+            const exercisesList = document.getElementById('exercises-list');
+            module.exercises.forEach(exercise => {
+                const exerciseItem = document.createElement('li');
+                exerciseItem.textContent = exercise;
+                exercisesList.appendChild(exerciseItem);
+            });
+        }
+    </script>
+</body>
+
+</html>
