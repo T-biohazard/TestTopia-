@@ -1,3 +1,3 @@
-﻿# TestTopia-
+﻿# TestTopia
 An interactive learning system designed to enhance student engagement and performance through modular education and intelligent assessment. The platform allows students to explore a variety of learning modules, each focused on a specific topic. After completing the modules, students take an engaging test that includes supportive features like lifelines to assist them during challenging questions.
 If a student accumulates five incorrect answers during the test, they are redirected to revisit the relevant module for review. However, upon successfully completing the test, the system stores their incorrect answers in a database. Leveraging AI, TestTopia analyzes their performance and recommends personalized tutorials tailored to their weaker areas—ensuring continuous improvement and academic success.
